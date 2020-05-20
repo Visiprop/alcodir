@@ -28,7 +28,7 @@
                 </div>
             </div>            
             <p class="card-text"><i>~ Margaret Thatcher, former UK Prime Minister</i></p>
-            <a href="#" class="btn btn-info">Absen</a>
+            <a href="{{ route('absency.submit')}}" class="btn btn-info">Absen</a>
         </div>
         <div class="card-footer text-muted">
             Opened

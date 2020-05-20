@@ -22,4 +22,5 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('dashboard');
 
 Route::get('/linkedin', 'LinkedinController@index')->name('linkedin');
+Route::get('/absency/submit', 'AbsencyController@submit')->name('absency.submit');
 
