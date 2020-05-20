@@ -19,4 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('dashboard');
+
+Route::get('/linkedin', 'LinkedinController@index')->name('linkedin');
+
