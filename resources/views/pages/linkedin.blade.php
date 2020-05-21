@@ -166,43 +166,46 @@
 <!-- End Form -->
 
 <!-- Start Table -->
+
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Data Table</h4>
-            <h6 class="card-subtitle">Linkedin</h6>
+            <h6 class="card-subtitle">Data table example</h6>
             <div class="table-responsive m-t-40">
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Position</th>
-                            <th>Compay</th>
+                            <th>Company</th>
+                            <th>URL</th>
                             <th>Gender</th>
-                            <th>Link</th>
                             <th>Date</th>
                         </tr>
                     </thead>
-                    <tbody>                        
+                    <tbody>
+                        @foreach($linkedinConnects as $row)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Gojek</td>
-                            <td>Male</td>
-                            <td>https://www.linkedin.com/in/januar-triandy-nur-elsan-a1b839144/</td>
-                            <td>2011/04/25</td>
-                        </tr>                    
+                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->position }}</td>
+                            <td>{{ $row->company }}</td>
+                            <td>{{ $row->url }}</td>
+                            <td>{{ $row->gender }}</td>
+                            <td>{{ $row->created_at }}</td>
+                        </tr>                        
+                        @endforeach
+                        
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
+    </div>    
 </div>
 
-<!-- This is data table -->
-<script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 
 
 
-<!-- Start Table -->
+
+<!-- End Table -->
 @endsection

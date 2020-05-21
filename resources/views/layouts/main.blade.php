@@ -17,6 +17,7 @@
     <link href="{{ asset('material/css/style.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="{{ asset('material/css/colors/blue.css')}}" id="theme" rel="stylesheet">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -317,6 +318,8 @@
     <script src="{{ asset('material/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('material/js/custom.min.js')}}"></script>
+    <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script>$('#myTable').DataTable();</script>
     
     <!-- ============================================================== -->
     <!-- Style switcher -->
