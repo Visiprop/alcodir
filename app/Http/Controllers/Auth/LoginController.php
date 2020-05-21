@@ -46,13 +46,13 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        $this->guard()->logout();
+        Auth::logout();
  
         // $request->session()->flush();
  
         // $request->session()->regenerate();
  
-        return redirect('/home');
+        return redirect('/dashboard');
             // ->withSuccess('Terimakasih, selamat datang kembali!');
     }
 

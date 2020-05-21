@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbsenciesTable extends Migration
+class LinkedinConnectTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateAbsenciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('absencies', function (Blueprint $table) {
+        Schema::create('linkedin_connects', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('status')->nullable();                                 
+            $table->string('name')->nullable();
+            $table->string('position')->nullable();
+            $table->string('company')->nullable();
+            $table->string('url')->nullable();
+            $table->string('gender')->nullable();
+            $table->integer('status')->nullable();                                 
             $table->timestamps();           
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -32,6 +37,6 @@ class CreateAbsenciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absencies');
+        //
     }
 }

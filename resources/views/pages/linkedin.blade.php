@@ -24,7 +24,7 @@
             <div class="d-flex flex-row">
                 <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
                 <div class="m-l-10 align-self-center">
-                    <h3 class="m-b-0 font-light">250</h3>
+                    <h3 class="m-b-0 font-light">{{ $linkedinConnects->count() }}</h3>
                     <h5 class="text-muted m-b-0">Total Linkedin</h5></div>
             </div>
         </div>
@@ -38,7 +38,8 @@
             <h4 class="m-b-0 text-white">Linkedin Form</h4>
         </div>
         <div class="card-body">
-            <form action="#" class="form-horizontal">
+            <form action="{{ route('linkedin.submit') }}" method="POST" class="form-horizontal">
+                @csrf
                 <div class="form-body">
                     <h3 class="box-title">Person Info</h3>
                     <hr class="m-t-0 m-b-40">
@@ -47,7 +48,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-3">Name</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" >
+                                    <input required name="name" type="text" class="form-control" >
                                     <small class="form-control-feedback"> Nama Lengkap </small> </div>
                             </div>
                         </div>
@@ -56,7 +57,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-3">Position</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-danger" >
+                                    <input required name="position" type="text" class="form-control form-control-danger" >
                                     <small class="form-control-feedback"> CEO, CMO, Marketing, Account Executive, etc </small> </div>
                             </div>
                         </div>
@@ -68,7 +69,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-3">Company</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-danger" >
+                                    <input required name="company" type="text" class="form-control form-control-danger" >
                                     <small class="form-control-feedback"> PT. Mamkur, Gojek, MonsterAR etc </small> </div>
                             </div>
                         </div>
@@ -77,9 +78,9 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-3">Gender</label>
                                 <div class="col-md-9">
-                                    <select class="form-control custom-select">
-                                        <option value="">Male</option>
-                                        <option value="">Female</option>
+                                    <select required name="gender"class="form-control custom-select">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
                                     </select>
                                     <small class="form-control-feedback"> Select Gender. </small> </div>
                             </div>
@@ -92,7 +93,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-3">Link</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-danger" >
+                                    <input required name="url" type="text" class="form-control form-control-danger" >
                                     <small class="form-control-feedback"> Link Account </small> </div>
                             </div>
                         </div>

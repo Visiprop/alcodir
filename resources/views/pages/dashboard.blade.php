@@ -16,6 +16,7 @@
 
 @section('content')
 <!-- Start Absency -->
+
 <div class="col-12">                    
     <div class="card text-center">
         <div class="card-header">
@@ -28,10 +29,16 @@
                 </div>
             </div>            
             <p class="card-text"><i>~ Margaret Thatcher, former UK Prime Minister</i></p>
-            <a href="{{ route('absency.submit')}}" class="btn btn-info">Absen</a>
+            <form action="{{ route('absency.submit') }}" method="POST" class="form-horizontal">
+                @csrf                
+                @empty($absency)                    
+                    <button type="submit" class="btn btn-success">Absent</button>
+                @endempty
+            </form>
         </div>
         <div class="card-footer text-muted">
-            Opened
+            {{ isset($absency) ? $absency->status : 'Opened'}}
+            
         </div>
     </div>
 </div>    
