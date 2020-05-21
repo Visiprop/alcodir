@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\LinkedinConnect;
 
 class LinkedinController extends Controller
@@ -11,10 +12,13 @@ class LinkedinController extends Controller
     //
     public function index()
     {      
+        $dt = Carbon::parse();
+        $today = $dt->today()->toDateString();
+        
         Auth::check();         
         $linkedinConnects = LinkedinConnect::where('user_id', Auth::getUser()->id)->get();
         // $linkedinConnects = LinkedinConnect::all();
-        return view('pages.linkedin', compact('linkedinConnects'));
+        return view('pages.linkedin', compact('linkedinConnects','today'));
     }
 
     public function submit(Request $req)

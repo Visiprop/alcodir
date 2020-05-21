@@ -17,7 +17,50 @@
 
 @section('content')
 
-<!-- Overview -->
+<!-- Start Overview -->
+
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex flex-row">
+                <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
+                <div class="m-l-10 align-self-center">
+                    <h3 class="m-b-0 font-light">
+                    @php($count=0) 
+                        @foreach ($linkedinConnects as $row)                            
+                            @if(\Carbon\Carbon::parse($row->created_at)->format('d/m/Y') === \Carbon\Carbon::parse($today)->format('d/m/Y'))
+                                @php($count++) 
+                            @endif
+                        @endforeach
+                    {{ $count }}
+                    </h3>
+                    <h5 class="text-muted m-b-0">Connect Today</h5></div>
+            </div>            
+        </div>        
+    </div>    
+</div>
+
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex flex-row">
+                <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
+                <div class="m-l-10 align-self-center">
+                    <h3 class="m-b-0 font-light">
+                    @php($count=0) 
+                        @foreach ($linkedinConnects as $row)                            
+                            @if(\Carbon\Carbon::parse($row->created_at)->format('m/Y') === \Carbon\Carbon::parse($today)->format('m/Y'))
+                                @php($count++) 
+                            @endif
+                        @endforeach
+                    {{ $count }}
+                    </h3>
+                    <h5 class="text-muted m-b-0">Connect This Month</h5></div>
+            </div>            
+        </div>        
+    </div>    
+</div>
+
 <div class="col-lg-3 col-md-6">
     <div class="card">
         <div class="card-body">
@@ -25,11 +68,12 @@
                 <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
                 <div class="m-l-10 align-self-center">
                     <h3 class="m-b-0 font-light">{{ $linkedinConnects->count() }}</h3>
-                    <h5 class="text-muted m-b-0">Total Linkedin</h5></div>
-            </div>
-        </div>
-    </div>
+                    <h5 class="text-muted m-b-0">Total Connect</h5></div>
+            </div>            
+        </div>        
+    </div>    
 </div>
+<!-- End Overview -->
 
 <!-- Start Form -->
 <div class="col-lg-12">
