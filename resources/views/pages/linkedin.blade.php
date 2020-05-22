@@ -17,7 +17,50 @@
 
 @section('content')
 
-<!-- Overview -->
+<!-- Start Overview -->
+
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex flex-row">
+                <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
+                <div class="m-l-10 align-self-center">
+                    <h3 class="m-b-0 font-light">
+                    @php($count=0) 
+                        @foreach ($linkedinConnects as $row)                            
+                            @if(\Carbon\Carbon::parse($row->created_at)->format('d/m/Y') === \Carbon\Carbon::parse($today)->format('d/m/Y'))
+                                @php($count++) 
+                            @endif
+                        @endforeach
+                    {{ $count }}
+                    </h3>
+                    <h5 class="text-muted m-b-0">Connected Today</h5></div>
+            </div>            
+        </div>        
+    </div>    
+</div>
+
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex flex-row">
+                <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
+                <div class="m-l-10 align-self-center">
+                    <h3 class="m-b-0 font-light">
+                    @php($count=0) 
+                        @foreach ($linkedinConnects as $row)                            
+                            @if(\Carbon\Carbon::parse($row->created_at)->format('m/Y') === \Carbon\Carbon::parse($today)->format('m/Y'))
+                                @php($count++) 
+                            @endif
+                        @endforeach
+                    {{ $count }}
+                    </h3>
+                    <h5 class="text-muted m-b-0">Connected This Month</h5></div>
+            </div>            
+        </div>        
+    </div>    
+</div>
+
 <div class="col-lg-3 col-md-6">
     <div class="card">
         <div class="card-body">
@@ -25,11 +68,12 @@
                 <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
                 <div class="m-l-10 align-self-center">
                     <h3 class="m-b-0 font-light">{{ $linkedinConnects->count() }}</h3>
-                    <h5 class="text-muted m-b-0">Total Linkedin</h5></div>
-            </div>
-        </div>
-    </div>
+                    <h5 class="text-muted m-b-0">Total Connected</h5></div>
+            </div>            
+        </div>        
+    </div>    
 </div>
+<!-- End Overview -->
 
 <!-- Start Form -->
 <div class="col-lg-12">
@@ -122,43 +166,48 @@
 <!-- End Form -->
 
 <!-- Start Table -->
+
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Data Table</h4>
-            <h6 class="card-subtitle">Linkedin</h6>
+            <h4 class="card-title">All Linkedin Connected Table</h4>
+            <h6 class="card-subtitle">Please check name before connect to Avoid Redundant Connect</h6>
             <div class="table-responsive m-t-40">
-                <table id="myTable" class="table table-bordered table-striped">
+                <table id="linkedinTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Position</th>
-                            <th>Compay</th>
+                            <th>Company</th>
+                            <th>URL</th>
                             <th>Gender</th>
-                            <th>Link</th>
+                            <th>Connected by</th>
                             <th>Date</th>
                         </tr>
                     </thead>
-                    <tbody>                        
+                    <tbody>
+                        @foreach($linkedinConnects as $row)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Gojek</td>
-                            <td>Male</td>
-                            <td>https://www.linkedin.com/in/januar-triandy-nur-elsan-a1b839144/</td>
-                            <td>2011/04/25</td>
-                        </tr>                    
+                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->position }}</td>
+                            <td>{{ $row->company }}</td>
+                            <td>{{ $row->url }}</td>
+                            <td>{{ $row->gender }}</td>
+                            <td>{{ $row->user->name }}</td>
+                            <td>{{ $row->created_at }}</td>
+                        </tr>                        
+                        @endforeach
+                        
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
+    </div>    
 </div>
 
-<!-- This is data table -->
-<script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<!-- End Table -->
+@endsection
 
-
-
-<!-- Start Table -->
+@section('script')
+    <script>$('#linkedinTable').DataTable();</script>
 @endsection

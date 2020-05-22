@@ -14,9 +14,10 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ asset('material/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('material/css/alcodir-style.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="{{ asset('material/css/colors/blue.css')}}" id="theme" rel="stylesheet">
+    <link href="{{ asset('material/css/colors/alcodir-dark.css')}}" id="theme" rel="stylesheet">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,7 +54,7 @@
                             <!-- Dark Logo icon -->
                             <img src="{{ asset('material/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="{{ asset('material/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
+                            <img src="{{ asset('alcodir/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -61,7 +62,7 @@
                          <!-- dark Logo text -->
                          <img src="{{ asset('material/images/logo-text.pn')}}g" alt="homepage" class="dark-logo" />
                          <!-- Light Logo text -->    
-                         <img src="{{ asset('material/images/logo-light-text.png')}}" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="{{ asset('alcodir/images/logo-light-text.png')}}" class="light-logo" alt="homepage" /></span> </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -142,8 +143,11 @@
                                         <div class="dw-user-box">
                                             <div class="u-img"><img src="{{ asset('material/images/users/1.jpg')}}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                <br>
+                                                <h4>{{Auth::getUser()->name}}</h4>
+                                                <p class="text-muted">{{Auth::getUser()->email}}</p>
+                                                <!-- <a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a> -->
+                                            </div>
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>                                   
@@ -170,7 +174,7 @@
                     <!-- User profile image -->
                     <div class="profile-img"> <img src="{{ asset('material/images/users/1.jpg')}}" alt="user" /> </div>
                     <!-- User profile text-->
-                    <div class="profile-text"> <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe <span class="caret"></span></a>
+                    <div class="profile-text"> <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{Auth::getUser()->name}}<span class="caret"></span></a>
                         
                     </div>
                 </div>
@@ -286,7 +290,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2018 Material Pro Admin by wrappixel.com
+                © 2020 All Coordination Here by PT. Visiprop Teknologi Indonesia
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -317,6 +321,9 @@
     <script src="{{ asset('material/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('material/js/custom.min.js')}}"></script>
+    <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    @yield('script')
+    
     
     <!-- ============================================================== -->
     <!-- Style switcher -->

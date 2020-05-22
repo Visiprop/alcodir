@@ -19,9 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Route::POST('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
 Route::get('/', 'HomeController@index')->name('dashboard');
 
 Route::get('/linkedin', 'LinkedinController@index')->name('linkedin');
-Route::get('/linkedin/submit', 'LinkedinController@submit')->name('linkedin.submit');
+Route::post('/linkedin/submit', 'LinkedinController@submit')->name('linkedin.submit');
 Route::post('/absency/submit', 'AbsencyController@submit')->name('absency.submit');
+
+
 
