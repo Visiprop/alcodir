@@ -114,7 +114,7 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">All VPoint Request Table</h4>
+            <h4 class="card-title">VPoint Request Table</h4>
             <!-- <h6 class="card-subtitle">Please check name before connect to Avoid Redundant Connect</h6> -->
             <div class="table-responsive m-t-40">
                 <table id="vpointTable" class="table table-bordered table-striped">
