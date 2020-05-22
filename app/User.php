@@ -39,10 +39,15 @@ class User extends Authenticatable
 
     public function absency()
 	{
-		return $this->hasMany('App\Invoice');
+		return $this->hasMany('App\Absency');
     }
     public function linkedinConnect()
 	{
 		return $this->hasMany('App\LinkedinConnect');
+    }
+
+    public function vpointRequest()
+	{
+		return $this->hasMany('App\VPointRequest');
     }
 }

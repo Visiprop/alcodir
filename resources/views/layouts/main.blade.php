@@ -151,7 +151,7 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>                                   
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="{{ route('logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -192,7 +192,10 @@
                                 <li><a class="mdi mdi-linkedin-box" href="{{ route('linkedin')}}">LinkedIn</a></li>
                                 <li><a class="text-muted">Quotation</a></li>                                
                             </ul>
-                        </li>                        
+                        </li> 
+                        <li>
+                            <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a>
+                        </li>                          
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

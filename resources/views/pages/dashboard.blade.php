@@ -53,7 +53,7 @@
                 <!-- <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a> -->
                 <!-- <a class="btn-close" data-action="close"><i class="ti-close"></i></a> -->
             </div>
-            <h4 class="card-title m-b-0">Sales Point This Month</h4>
+            <h4 class="card-title m-b-0">LinkedIn Connect Leaderboard</h4>
         </div>
         <div class="card-body b-t collapse show">
             <table class="table v-middle no-border">
@@ -61,20 +61,18 @@
                     <tr>
                         <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
                         <td>Rendy</td>
-                        <td align="right"><span class="label label-light-info">2300</span></td>
+                        <td align="right"><span class="label label-light-info">{{$rendyLC}}</span></td>
                     </tr>
                     <tr>
                         <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
                         <td>Saehu</td>
-                        <td align="right"><span class="label label-light-info">2300</span></td>
+                        <td align="right"><span class="label label-light-info">{{$saehuLC}}</span></td>
                     </tr>
                     <tr>
                         <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
                         <td>Sule</td>
-                        <td align="right"><span class="label label-light-info">2300</span></td>
-                    </tr>
-                    
-                    
+                        <td align="right"><span class="label label-light-info">{{$suleLC}}</span></td>
+                    </tr>                                        
                 </tbody>
             </table>
         </div>
