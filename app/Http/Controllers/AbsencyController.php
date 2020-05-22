@@ -21,9 +21,9 @@ class AbsencyController extends Controller
             // dd($absency->created_at->toDateString());
             //Check Late
             if($dt->hour > 10)
-                $status = 'Late';
+                $status = 1;
             else
-                $status = 'On Time';
+                $status = 0;
 
             $data = [
                 'user_id'       => Auth::getUser()->id,                
@@ -33,7 +33,6 @@ class AbsencyController extends Controller
             
             $absency = Absency::create($data);
             
-
             return redirect()->route('dashboard');
         }
     }

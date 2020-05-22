@@ -20,7 +20,7 @@
 <div class="col-12">                    
     <div class="card text-center">
         <div class="card-header">
-            Daily Absency
+            Daily Absency 
         </div>
         <div class="card-body">
             <div class="row ">
@@ -31,13 +31,24 @@
             <p class="card-text"><i>~ Margaret Thatcher, former UK Prime Minister</i></p>
             <form action="{{ route('absency.submit') }}" method="POST" class="form-horizontal">
                 @csrf                
-                @empty($absency)                    
+                @empty($myAbsency)     
+                    @if(\Carbon\Carbon::parse(now())->hour > 9)               
                     <button type="submit" class="btn btn-success">Absent</button>
+                    @endif
                 @endempty
             </form>
         </div>
-        <div class="card-footer text-muted">
-            {{ isset($absency) ? $absency->status : 'Opened'}}
+        <div class="card-footer text-muted">            
+            @isset($myAbsency)
+                @if($myAbsency->status === 1)
+                    Late
+                @else
+                    On Time
+                @endif
+            @endisset
+            @empty($myAbsency)                    
+                Open
+            @endempty
             
         </div>
     </div>
@@ -48,12 +59,8 @@
 <div class="col-xl-3">
     <div class="card earning-widget">
         <div class="card-header">
-            <div class="card-actions">
-                <!-- <a class="" data-action="collapse"><i class="ti-minus"></i></a> -->
-                <!-- <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a> -->
-                <!-- <a class="btn-close" data-action="close"><i class="ti-close"></i></a> -->
-            </div>
-            <h4 class="card-title m-b-0">LinkedIn Connect Leaderboard</h4>
+            
+            <h4 class="card-title m-b-0">LinkedIn Connect Board</h4>
         </div>
         <div class="card-body b-t collapse show">
             <table class="table v-middle no-border">
@@ -79,6 +86,36 @@
     </div>    
 </div>
 <!-- End Monthly Point -->
+
+<!-- Start Absency -->
+<div class="col-xl-3">
+    <div class="card earning-widget">
+        <div class="card-header">
+            
+            <h4 class="card-title m-b-0">Today Absency Board <span style="font-size: 13px;"><i>{{now()->format('d-m-Y')}}</i></span></h4>
+        </div>
+        <div class="card-body b-t collapse show">
+            <table class="table v-middle no-border">
+                <tbody>
+                    @foreach($todayAbsencies as $row)
+                    <tr>
+                        <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
+                        <td>{{ $row->user->name }}</td>
+                        <td>{{ $row->created_at->format('H:i:s') }}</td>
+                        @if($row->status === 1)
+                            <td align="right"><span class="label label-light-danger">Late</span></td>
+                        @else
+                            <td align="right"><span class="label label-light-info">On Time</span></td>
+                        @endif
+                    </tr> 
+                     
+                    @endforeach                                                       
+                </tbody>
+            </table>
+        </div>
+    </div>    
+</div>
+<!-- End Absency -->
 
 
 @endsection

@@ -68,25 +68,28 @@
                         <!--/span-->
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Reason</label>
-                                <div class="col-md-9">
-                                    <input required name="reason" type="text" class="form-control" >
-                                    <small class="form-control-feedback"> Reason to Give VPoint</small> </div>
-                            </div>
-                        </div>
-                        <!--/span-->                                                
-                    </div>
-                    <!--/row-->
-                    <div class="row">                        
-                        <div class="col-md-6">
-                            <div class="form-group row">
                                 <label class="control-label text-right col-md-3">VPoint</label>
                                 <div class="col-md-9">
                                     <input required name="point" type="number" class="form-control form-control-danger" >
                                     <small class="form-control-feedback"> VPoint to Give </small> </div>
                             </div>
                         </div>
-                        <!--/span-->                        
+                        <!--/span--> 
+                                                                    
+                    </div>
+                    <!--/row-->
+                    <div class="row">                        
+                         
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">Reason</label>
+                                <div class="col-md-9">
+                                    <!-- <input required name="reason" type="text" class="form-control" > -->
+                                    <textarea required name="reason"class="form-control" rows="5"></textarea>
+                                    <small class="form-control-feedback"> Reason to Give VPoint</small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->                          
                     </div>                   
                 </div>
                 <hr>

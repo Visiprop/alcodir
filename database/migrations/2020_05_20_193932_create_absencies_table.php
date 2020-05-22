@@ -18,7 +18,7 @@ class CreateAbsenciesTable extends Migration
 
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('status')->nullable();                                 
+            $table->integer('status')->nullable();                                 
             $table->timestamps();           
 
             $table->foreign('user_id')->references('id')->on('users');

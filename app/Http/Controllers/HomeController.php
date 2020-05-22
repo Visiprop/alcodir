@@ -27,14 +27,14 @@ class HomeController extends Controller
     public function index()
     {        
         Auth::check();         
-        $absency = Absency::whereDate('created_at', '=', date('Y-m-d'))->where('user_id', Auth::getUser()->id)->first();
-
+        $myAbsency = Absency::whereDate('created_at', '=', date('Y-m-d'))->where('user_id', Auth::getUser()->id)->first();
+        $todayAbsencies = Absency::whereDate('created_at', '=', date('Y-m-d'))->get();
         $linkedinConnects = LinkedinConnect::all();
         $rendyLC = LinkedinConnect::where('user_id','2')->count();
         $saehuLC = LinkedinConnect::where('user_id','3')->count();
         $suleLC = LinkedinConnect::where('user_id','4')->count();
 
-        return view('pages.dashboard',compact('absency','rendyLC','saehuLC','suleLC'));
+        return view('pages.dashboard',compact('todayAbsencies','myAbsency','rendyLC','saehuLC','suleLC'));
         // return view('/home');
     }
 
