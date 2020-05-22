@@ -27,6 +27,7 @@ class HomeController extends Controller
     {        
         Auth::check();         
         $absency = Absency::whereDate('created_at', '=', date('Y-m-d'))->where('user_id', Auth::getUser()->id)->first();
-        return view('pages.dashboard',compact('absency'));
+        // return view('pages.dashboard',compact('absency'));
+        return view('/home');
     }
 }

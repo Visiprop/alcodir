@@ -12,12 +12,13 @@ class LinkedinController extends Controller
     //
     public function index()
     {      
+        Auth::check();  
         $dt = Carbon::parse();
         $today = $dt->today()->toDateString();
         
-        Auth::check();         
-        $linkedinConnects = LinkedinConnect::where('user_id', Auth::getUser()->id)->get();
-        // $linkedinConnects = LinkedinConnect::all();
+        // Auth::check();         
+        // $linkedinConnects = LinkedinConnect::where('user_id', Auth::getUser()->id)->get();
+        $linkedinConnects = LinkedinConnect::all();
         return view('pages.linkedin', compact('linkedinConnects','today'));
     }
 

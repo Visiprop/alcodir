@@ -34,7 +34,7 @@
                         @endforeach
                     {{ $count }}
                     </h3>
-                    <h5 class="text-muted m-b-0">Connect Today</h5></div>
+                    <h5 class="text-muted m-b-0">Connected Today</h5></div>
             </div>            
         </div>        
     </div>    
@@ -55,7 +55,7 @@
                         @endforeach
                     {{ $count }}
                     </h3>
-                    <h5 class="text-muted m-b-0">Connect This Month</h5></div>
+                    <h5 class="text-muted m-b-0">Connected This Month</h5></div>
             </div>            
         </div>        
     </div>    
@@ -68,7 +68,7 @@
                 <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
                 <div class="m-l-10 align-self-center">
                     <h3 class="m-b-0 font-light">{{ $linkedinConnects->count() }}</h3>
-                    <h5 class="text-muted m-b-0">Total Connect</h5></div>
+                    <h5 class="text-muted m-b-0">Total Connected</h5></div>
             </div>            
         </div>        
     </div>    
@@ -170,8 +170,8 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Data Table</h4>
-            <h6 class="card-subtitle">Data table example</h6>
+            <h4 class="card-title">All Linkedin Connected Table</h4>
+            <h6 class="card-subtitle">Please check name before connect to Avoid Redundant Connect</h6>
             <div class="table-responsive m-t-40">
                 <table id="linkedinTable" class="table table-bordered table-striped">
                     <thead>
@@ -181,6 +181,7 @@
                             <th>Company</th>
                             <th>URL</th>
                             <th>Gender</th>
+                            <th>Connected by</th>
                             <th>Date</th>
                         </tr>
                     </thead>
@@ -192,6 +193,7 @@
                             <td>{{ $row->company }}</td>
                             <td>{{ $row->url }}</td>
                             <td>{{ $row->gender }}</td>
+                            <td>{{ $row->user->name }}</td>
                             <td>{{ $row->created_at }}</td>
                         </tr>                        
                         @endforeach
