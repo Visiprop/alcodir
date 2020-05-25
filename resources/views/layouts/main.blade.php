@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('alcodir/images/logo-light-icon.png')}}">
     <title>ALCODIR</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -150,8 +150,11 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li role="separator" class="divider"></li>                                   
-                                    <li><a href="{{ route('logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li role="separator" class="divider"></li>     
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>                              
+                                        <input type="submit" form="logout-form" />
                                 </ul>
                             </div>
                         </li>
@@ -185,7 +188,11 @@
                         <li class="nav-small-cap">SOLDIER</li>
                         <li>
                             <a href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>                        
+                        </li>   
+                        <li>
+                            <a href="{{ route('dailyreport')}}" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Report</span></a>
+                        </li>   
+                        
                         <li>
                             <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Sales</span></a>
                             <ul aria-expanded="false" class="collapse">

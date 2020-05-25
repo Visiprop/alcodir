@@ -50,4 +50,9 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\VPointRequest');
     }
+
+    public function dailyReport()
+	{
+		return $this->hasMany('App\DailyReport');
+    }
 }

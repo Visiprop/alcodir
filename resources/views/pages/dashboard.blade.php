@@ -33,7 +33,7 @@
                 @csrf                
                 @empty($myAbsency)     
                     @if(\Carbon\Carbon::parse(now())->hour > 9)               
-                    <button type="submit" class="btn btn-success">Absent</button>
+                    <button type="submit" class="btn btn-success">Absent</button>                                            
                     @endif
                 @endempty
             </form>
@@ -47,7 +47,11 @@
                 @endif
             @endisset
             @empty($myAbsency)                    
-                Open
+                @if(\Carbon\Carbon::parse(now())->hour > 9)               
+                    Open
+                @else
+                    Close
+                @endif
             @endempty
             
         </div>
