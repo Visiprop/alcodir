@@ -19,4 +19,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// Only authenticated users may enter...
+Route::get('/', 'HomeController@index')->name('dashboard');
+Route::get('/linkedin', 'LinkedinController@index')->name('linkedin');
+Route::post('/linkedin/submit', 'LinkedinController@submit')->name('linkedin.submit');
+Route::post('/absency/submit', 'AbsencyController@submit')->name('absency.submit');
+
+Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
+Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');
+Route::POST('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+Route::get('/dailyreport', 'DailyReportController@index')->name('dailyreport');
+Route::post('/dailyreport/submit', 'DailyReportController@submit')->name('dailyreport.submit');
+
+
+

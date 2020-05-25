@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -36,6 +37,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        
     }
 
     /**
@@ -46,14 +48,10 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        $this->guard()->logout();
- 
-        // $request->session()->flush();
- 
-        // $request->session()->regenerate();
- 
-        return redirect('/home');
-            // ->withSuccess('Terimakasih, selamat datang kembali!');
+        // dd();
+        Auth::logout();        
+        return redirect()->route('dashboard');
+           
     }
 
 }
