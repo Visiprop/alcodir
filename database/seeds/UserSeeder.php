@@ -30,19 +30,22 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Rendy',
             'email' => 'rendy@visiprop.com',
-            'password' => Hash::make('qwerty123'),
+            'photo_path' => 'alcodir\images\users\Rendy.jpg',
+            'password' => Hash::make('rendykayukayu123'),
         ]);
 
         User::create([
-            'name' => 'Saehu',
-            'email' => 'saehu@visiprop.com',
-            'password' => Hash::make('qwerty123'),
+            'name' => 'Syaekhu',
+            'email' => 'syaekhu@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Syaekhu.jpg',
+            'password' => Hash::make('syaekhukayukayu123'),
         ]);
 
         User::create([
-            'name' => 'Sule',
+            'name' => 'Zulkifli',
             'email' => 'zulkifli@visiprop.com',
-            'password' => Hash::make('qwerty123'),
+            'photo_path' => 'alcodir\images\users\Zulkifli.jpg',
+            'password' => Hash::make('zulkiflikayukayu123'),
         ]);
     }
 
