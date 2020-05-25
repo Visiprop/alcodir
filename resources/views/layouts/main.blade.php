@@ -136,12 +136,12 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/users/1.jpg')}}" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset(Auth::getUser()->photo_path)}}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="{{ asset('material/images/users/1.jpg')}}" alt="user"></div>
+                                            <div class="u-img"><img src="{{ asset(Auth::getUser()->photo_path)}}" alt="user"></div>
                                             <div class="u-text">
                                                 <br>
                                                 <h4>{{Auth::getUser()->name}}</h4>
@@ -175,7 +175,7 @@
                 <!-- User profile -->
                 <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="{{ asset('material/images/users/1.jpg')}}" alt="user" /> </div>
+                    <div class="profile-img"> <img src="{{ asset(Auth::getUser()->photo_path)}}" alt="user" /> </div>
                     <!-- User profile text-->
                     <div class="profile-text"> <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{Auth::getUser()->name}}<span class="caret"></span></a>
                         
@@ -201,7 +201,7 @@
                             </ul>
                         </li> 
                         <li>
-                            <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a>
+                            <!-- <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a> -->
                         </li>                          
                     </ul>
                 </nav>
@@ -300,7 +300,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2020 All Coordination Here by PT. Visiprop Teknologi Indonesia
+                © 2020 All Coordination Here by PT. Visiprop Teknologi Indonesia 
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

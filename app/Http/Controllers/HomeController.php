@@ -31,10 +31,10 @@ class HomeController extends Controller
         $todayAbsencies = Absency::whereDate('created_at', '=', date('Y-m-d'))->get();
         $linkedinConnects = LinkedinConnect::all();
         $rendyLC = LinkedinConnect::where('user_id','2')->count();
-        $saehuLC = LinkedinConnect::where('user_id','3')->count();
+        $syaekhuLC = LinkedinConnect::where('user_id','3')->count();
         $suleLC = LinkedinConnect::where('user_id','4')->count();
 
-        return view('pages.dashboard',compact('todayAbsencies','myAbsency','rendyLC','saehuLC','suleLC'));
+        return view('pages.dashboard',compact('todayAbsencies','myAbsency','rendyLC','syaekhuLC','suleLC'));
         // return view('/home');
     }
 

@@ -70,18 +70,18 @@
             <table class="table v-middle no-border">
                 <tbody>
                     <tr>
-                        <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
+                        <td style="width:40px"><img src="{{ asset('alcodir/images/users/Rendy.jpg')}}" width="50" class="img-circle" alt="logo"></td>
                         <td>Rendy</td>
                         <td align="right"><span class="label label-light-info">{{$rendyLC}}</span></td>
                     </tr>
                     <tr>
-                        <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
-                        <td>Saehu</td>
-                        <td align="right"><span class="label label-light-info">{{$saehuLC}}</span></td>
+                        <td style="width:40px"><img src="{{ asset('alcodir/images/users/Syaekhu.jpg')}}" width="50" class="img-circle" alt="logo"></td>
+                        <td>Syaekhu</td>
+                        <td align="right"><span class="label label-light-info">{{$syaekhuLC}}</span></td>
                     </tr>
                     <tr>
-                        <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
-                        <td>Sule</td>
+                        <td style="width:40px"><img src="{{ asset('alcodir/images/users/Zulkifli.jpg')}}" width="50" class="img-circle" alt="logo"></td>
+                        <td>Zulkifli</td>
                         <td align="right"><span class="label label-light-info">{{$suleLC}}</span></td>
                     </tr>                                        
                 </tbody>
