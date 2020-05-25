@@ -25,14 +25,14 @@
         <div class="card-body">
             <div class="row ">
                 <div class="col-md-6 offset-md-3">
-                <h4 class="card-title">What is success? I think it is a mixture of having a flair for the thing that you are doing; knowing that it is not enough, that you have got to have hard work and a certain sense of purpose.</h4>
+                <h4 id="quoteText" class="card-title"></h4>
                 </div>
             </div>            
-            <p class="card-text"><i>~ Margaret Thatcher, former UK Prime Minister</i></p>
+            <p class="card-text"><i id="quoteAuthor"></i></p>
             <form action="{{ route('absency.submit') }}" method="POST" class="form-horizontal">
                 @csrf                
                 @empty($myAbsency)     
-                    @if(\Carbon\Carbon::parse(now())->hour > 9)               
+                    @if(\Carbon\Carbon::parse(now())->hour >= 9)               
                     <button type="submit" class="btn btn-success">Absent</button>                                            
                     @endif
                 @endempty
@@ -122,4 +122,17 @@
 <!-- End Absency -->
 
 
+@endsection
+
+@section('script')
+<script>
+    fetch('https://api.quotable.io/random')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("quoteText").innerHTML = data.content
+        document.getElementById("quoteAuthor").innerHTML = `~ ${data.author}`
+        
+        console.log(`${data.content} —${data.author}`)
+    })
+</script>
 @endsection

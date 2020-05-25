@@ -31,6 +31,7 @@ Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name
 Route::POST('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/dailyreport', 'DailyReportController@index')->name('dailyreport');
+Route::post('/dailyreport/submit', 'DailyReportController@submit')->name('dailyreport.submit');
 
 
 

@@ -16,11 +16,9 @@ class AbsencyController extends Controller
         if(Auth::check()) {
 
             $dt = Carbon::parse();
-            
-            // dd($dt->today());
-            // dd($absency->created_at->toDateString());
+                        
             //Check Late
-            if($dt->hour > 10)
+            if($dt->hour >= 10)
                 $status = 1;
             else
                 $status = 0;

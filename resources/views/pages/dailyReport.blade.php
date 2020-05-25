@@ -19,42 +19,71 @@
 
 
 <!-- Start Form -->
-<div class="col-lg-12">
-    <div class="card card-outline-info">
-        <div class="card-header">
-            <h4 class="m-b-0 text-white">Daily Report Form</h4>
-        </div>
-        <div class="card-body">
-            <form action="#">
-                <div class="form-body">
-                    <h3 class="card-title">Report</h3>
-                    <hr>
-                    <div class="row p-t-20">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label">Fact</label>
-                                <textarea class="form-control" rows="5"></textarea>
-                                <small class="form-control-feedback"></small> </div>
+@empty($myDailyReport)     
+    @if(\Carbon\Carbon::parse(now())->hour >= 16 ) 
+    <div class="col-lg-12">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">Daily Report Form </h4>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('dailyreport.submit') }}" method="POST" class="form-horizontal">
+                    @csrf
+                    <div class="form-body">
+                        <h3 class="card-title">Report</h3>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Fact</label>
+                                    <textarea required name="fact" class="form-control" rows="5"></textarea>
+                                    <small class="form-control-feedback"></small> </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-label">
+                                    <label class="control-label">Advice</label>
+                                    <textarea name="advice"class="form-control" rows="5"></textarea>
+                                    <small class="form-control-feedback"> Advice for All of Us (Optional)</small> </div>
+                            </div>
+                            <!--/span-->
                         </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group has-label">
-                                <label class="control-label">Advice</label>
-                                <textarea class="form-control" rows="5"></textarea>
-                                <small class="form-control-feedback"> Advice for All of Us </small> </div>
-                        </div>
-                        <!--/span-->
+                        <!--/row-->                                        
                     </div>
-                    <!--/row-->                                        
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Submit</button>
-                    
-                </div>
-            </form>
+                    <div class="form-actions">
+                                                            
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Submit</button>
+
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+    @else
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                Daily Report Open at 16:00 - 19:00 WIB
+            </div>
+        </div>
+    </div>
+    @endif
+@endempty
+
+@isset($myDailyReport)
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                Daily Report Submitted
+                @if($myDailyReport->status == 0)
+                    <span class="badge badge-success">On Time</span>
+                @else
+                    <span class="badge badge-danger">Late</span>
+                @endif
+            </div>
+        </div>
+    </div>
+@endisset
 <!-- End Form -->
 
 
@@ -69,19 +98,21 @@
                     <thead>
                         <tr>
                             <th>Fact</th>
-                            <th>Date</th>
                             <th>Advice</th>
-                            <th>Status</th>                            
+                            <th>Date</th>
+                            <!-- <th>Status</th>                             -->
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($dailyReports as $row)
-                        <tr>
-                            <td>{{ $row->fact }}</td>
-                            <td>{{ $row->created_at }}</td>
-                            <td>{{ $row->advice }}</td>
-                            <td>{{ $row->status }}</td>                            
-                        </tr>                        
+                            @if(Auth::getUser()->id === $row->user_id)
+                            <tr>
+                                <td>{{ $row->fact }}</td>
+                                <td>{{ $row->advice }}</td>
+                                <td>{{ $row->created_at }}</td>
+                                <!-- <td>{{ $row->status }}</td>                             -->
+                            </tr>  
+                            @endif                      
                         @endforeach
                         
                     </tbody>
@@ -96,4 +127,5 @@
 
 @section('script')
     <script>$('#dailyReportTable').DataTable();</script>
+    
 @endsection
