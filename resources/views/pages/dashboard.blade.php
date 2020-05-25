@@ -103,7 +103,7 @@
                 <tbody>
                     @foreach($todayAbsencies as $row)
                     <tr>
-                        <td style="width:40px"><img src="{{ asset('material/images/users/1.jpg')}}" width="50" class="img-circle" alt="logo"></td>
+                        <td style="width:40px"><img src="{{ $row->user->photo_path}}" width="50" class="img-circle" alt="logo"></td>
                         <td>{{ $row->user->name }}</td>
                         <td>{{ $row->created_at->format('H:i:s') }}</td>
                         @if($row->status === 1)
