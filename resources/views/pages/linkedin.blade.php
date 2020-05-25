@@ -28,7 +28,7 @@
                     <h3 class="m-b-0 font-light">
                     @php($count=0) 
                         @foreach ($linkedinConnects as $row)                            
-                            @if(\Carbon\Carbon::parse($row->created_at)->format('d/m/Y') === \Carbon\Carbon::parse($today)->format('d/m/Y'))
+                            @if(\Carbon\Carbon::parse($row->created_at)->format('d/m/Y') === \Carbon\Carbon::parse($today)->format('d/m/Y') && Auth::getUser()->id === $row->user_id)
                                 @php($count++) 
                             @endif
                         @endforeach
@@ -49,7 +49,7 @@
                     <h3 class="m-b-0 font-light">
                     @php($count=0) 
                         @foreach ($linkedinConnects as $row)                            
-                            @if(\Carbon\Carbon::parse($row->created_at)->format('m/Y') === \Carbon\Carbon::parse($today)->format('m/Y'))
+                            @if(\Carbon\Carbon::parse($row->created_at)->format('m/Y') === \Carbon\Carbon::parse($today)->format('m/Y') && Auth::getUser()->id === $row->user_id)
                                 @php($count++) 
                             @endif
                         @endforeach
@@ -67,7 +67,15 @@
             <div class="d-flex flex-row">
                 <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
                 <div class="m-l-10 align-self-center">
-                    <h3 class="m-b-0 font-light">{{ $linkedinConnects->count() }}</h3>
+                    <h3 class="m-b-0 font-light">
+                    @php($count=0) 
+                        @foreach ($linkedinConnects as $row)                            
+                            @if(Auth::getUser()->id === $row->user_id)
+                                @php($count++) 
+                            @endif
+                        @endforeach
+                    {{ $count }}
+                    </h3>
                     <h5 class="text-muted m-b-0">Total Connected</h5></div>
             </div>            
         </div>        

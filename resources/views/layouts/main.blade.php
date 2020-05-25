@@ -154,7 +154,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>                              
-                                        <input type="submit" form="logout-form" />
+                                        <li><a href="javascript:$('#logout-form').submit()"><i class="fa fa-power-off"></i> Logout</a></li><li>
                                 </ul>
                             </div>
                         </li>
