@@ -13,19 +13,58 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        
+    {   
+        $this->createSuperadmin();     
+        $this->createManagement();
         $this->createSoldier();
     }
 
-    
+    public function createSuperadmin()
+    {
+        User::create([
+            'name' => 'superadmin',
+            'email' => 'superadmin@visiprop.com',
+            'password' => Hash::make('qwerty123'),
+        ]);
+    }
 
-    public function createSoldier()
+    public function createManagement()
     {
         User::create([
             'name' => 'januar',
             'email' => 'januar@visiprop.com',
             'password' => Hash::make('qwerty123'),
         ]);
+
+        User::create([
+            'name' => 'gayuh',
+            'email' => 'gayuh@visiprop.com',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        User::create([
+            'name' => 'rohmat',
+            'email' => 'rohmat@visiprop.com',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        User::create([
+            'name' => 'donny',
+            'email' => 'donny@visiprop.com',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        User::create([
+            'name' => 'teguh',
+            'email' => 'teguh@visiprop.com',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        
+    }
+
+    public function createSoldier()
+    {
 
         User::create([
             'name' => 'Rendy',
