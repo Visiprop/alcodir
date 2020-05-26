@@ -46,7 +46,7 @@
     <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/login-register.jpg') }});">
   <div class="login-box card">
     <div class="card-body">
-      <form class="form-horizontal form-material" method="POST" action="{{ route('login') }}">
+      <form class="form-horizontal form-material" method="POST" action="{{ route('login.post') }}">
         @csrf 
 
         <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('alcodir/images/logo-light-icon.png')}}" alt="Home" /><br/><img src="{{ asset('alcodir/images/logo-light-text.png')}}" alt="Home" /></a>  

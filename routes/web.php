@@ -17,8 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
 
+
+Route::get('/login', 'Auth\LoginController@index')->name('login');
+Route::POST('/login/post', 'Auth\LoginController@loginPost')->name('login.post');
 
 // Only authenticated users may enter...
 Route::get('/', 'HomeController@index')->name('dashboard');
