@@ -95,61 +95,46 @@
                 <div class="form-body">
                     <h3 class="box-title">Person Info</h3>
                     <hr class="m-t-0 m-b-40">
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="row">                        
+                        <div class="col-md-8">
                             <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Name</label>
-                                <div class="col-md-9">
-                                    <input required name="name" type="text" class="form-control" >
-                                    <small class="form-control-feedback"> Nama Lengkap </small> </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Position</label>
+                                <label class="control-label text-right col-md-2">Position and Company</label>
                                 <div class="col-md-9">
                                     <input required name="position" type="text" class="form-control form-control-danger" >
-                                    <small class="form-control-feedback"> CEO, CMO, Marketing, Account Executive, etc </small> </div>
+                                    <small class="form-control-feedback"> CEO at PT Karya Anak Bangsa </small> 
+                                </div>
                             </div>
                         </div>
-                        <!--/span-->
+                        <!--/span-->                        
                     </div>
-                    <!--/row-->
-                    <div class="row">                        
-                        <div class="col-md-6">
+                    <div class="row">                                                
+                        <div class="col-md-8">
                             <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Company</label>
-                                <div class="col-md-9">
-                                    <input required name="company" type="text" class="form-control form-control-danger" >
-                                    <small class="form-control-feedback"> PT. Mamkur, Gojek, MonsterAR etc </small> </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Gender</label>
-                                <div class="col-md-9">
-                                    <select required name="gender"class="form-control custom-select">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                    <small class="form-control-feedback"> Select Gender. </small> </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                    </div>
-                    <!--/row-->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Link</label>
+                                <label class="control-label text-right col-md-2">Link</label>
                                 <div class="col-md-9">
                                     <input required name="url" type="text" class="form-control form-control-danger" >
                                     <small class="form-control-feedback"> Link Account </small> </div>
                             </div>
                         </div>
-                        
+                        <!--/span-->                        
+                    </div>
+                    <!--/row-->                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-2">Gender</label>
+                                <div class="col-md-9">
+                                    <!-- <div class="demo-radio-button"> -->
+                                        <input name="gender" type="radio" id="gender_male" value="male" class="with-gap radio-col-alcodir-blue" checked >
+                                        <label for="gender_male">Male</label>                                
+
+                                        <input name="gender" type="radio" id="gender_female" value="female" class="with-gap radio-col-alcodir-blue">
+                                        <label for="gender_female">Female</label>                                
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>                    
                     <!--/row-->
                 </div>
@@ -182,10 +167,8 @@
             <div class="table-responsive m-t-40">
                 <table id="linkedinTable" class="table table-bordered table-striped">
                     <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Company</th>
+                        <tr>                            
+                            <th>Position & Company</th>                            
                             <th>URL</th>
                             <th>Gender</th>
                             <th>Connected by</th>
@@ -194,10 +177,8 @@
                     </thead>
                     <tbody>
                         @foreach($linkedinConnects as $row)
-                        <tr>
-                            <td>{{ $row->name }}</td>
-                            <td>{{ $row->position }}</td>
-                            <td>{{ $row->company }}</td>
+                        <tr>                            
+                            <td>{{ $row->position }}</td>                            
                             <td>{{ $row->url }}</td>
                             <td>{{ $row->gender }}</td>
                             <td>{{ $row->user->name }}</td>

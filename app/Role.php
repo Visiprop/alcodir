@@ -73,6 +73,5 @@ class Role extends Model
 
         return $roles;
     }
-
  
 }
