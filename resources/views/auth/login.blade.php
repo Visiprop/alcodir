@@ -46,7 +46,7 @@
     <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/login-register.jpg') }});">
   <div class="login-box card">
     <div class="card-body">
-      <form class="form-horizontal form-material" method="POST" action="{{ route('login.post') }}">
+      <form class="form-horizontal form-material" method="POST" action="{{ route('login.post') }}" onsubmit="submitHandler()">
         @csrf 
 
         <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('alcodir/images/logo-light-icon.png')}}" alt="Home" /><br/><img src="{{ asset('alcodir/images/logo-light-text.png')}}" alt="Home" /></a>  
@@ -54,6 +54,7 @@
         <div class="form-group m-t-40">
           <div class="col-xs-12">
             <input value="{{ old('email') }}" id="email" name="email" type="email" class="form-control" required autocomplete="email" autofocus placeholder="Email">
+            
             @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -115,7 +116,15 @@
       </form>
     </div>
   </div>
+
+  <a hidden id="toast-launcher" href="#" class="btn btn-success" data-notify-type="success" 
+    data-notify-msg="<i class=icon-ok-sign></i> Add to Cart Successfully!" 
+    onclick="SEMICOLON.widget.notifications(this); return false;">Show Success
+  </a>
+
 </section>
+      
+
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
@@ -141,6 +150,14 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="{{ asset('material/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
+
+
+    <script>
+      function submitHandler(){
+        console.log('submited');
+      }
+    </script>
+
 </body>
 
 </html>
