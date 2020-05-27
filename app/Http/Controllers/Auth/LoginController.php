@@ -27,8 +27,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (!Auth::attempt($credentials)) {
-            // Authentication fail...
-            
+            // Authentication fail...            
             return Redirect::back();
         }
 
@@ -41,7 +40,7 @@ class LoginController extends Controller
 
     public function logout()
     {
-        // dd();
+        
         Auth::logout();        
         return redirect()->route('dashboard');
            

@@ -31,32 +31,37 @@ class UserSeeder extends Seeder
     public function createManagement()
     {
         User::create([
-            'name' => 'januar',
+            'name' => 'Januar',
             'email' => 'januar@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Januar.jpg',
             'password' => Hash::make('qwerty123'),
         ]);
 
         User::create([
-            'name' => 'gayuh',
+            'name' => 'Gayuh',
             'email' => 'gayuh@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Gayuh.jpg',
             'password' => Hash::make('qwerty123'),
         ]);
 
         User::create([
-            'name' => 'rohmat',
+            'name' => 'Rohmat',
             'email' => 'rohmat@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Rohmat.jpg',
             'password' => Hash::make('qwerty123'),
         ]);
 
         User::create([
-            'name' => 'donny',
+            'name' => 'Donny',
             'email' => 'donny@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Donny.jpg',
             'password' => Hash::make('qwerty123'),
         ]);
 
         User::create([
-            'name' => 'teguh',
+            'name' => 'Teguh',
             'email' => 'teguh@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Teguh.jpg',
             'password' => Hash::make('qwerty123'),
         ]);
 
@@ -67,7 +72,7 @@ class UserSeeder extends Seeder
     {
 
         User::create([
-            'name' => 'Rendy',
+            'name' => 'Rendy Ipangaribuan',
             'email' => 'rendy@visiprop.com',
             'photo_path' => 'alcodir\images\users\Rendy.jpg',
             'password' => Hash::make('rendykayukayu123'),
