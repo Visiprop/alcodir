@@ -124,13 +124,21 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-2">Gender</label>
                                 <div class="col-md-9">
-                                    <!-- <div class="demo-radio-button"> -->
-                                        <input name="gender" type="radio" id="gender_male" value="male" class="with-gap radio-col-alcodir-blue" checked >
-                                        <label for="gender_male">Male</label>                                
+                                    <!-- Ucok Request, Female as Default Value -->
+                                    @if(Auth::getUser()->id === 7) 
+                                    <input name="gender" type="radio" id="gender_male" value="male" class="with-gap radio-col-alcodir-blue">
+                                    <label for="gender_male">Male</label>                                
 
-                                        <input name="gender" type="radio" id="gender_female" value="female" class="with-gap radio-col-alcodir-blue">
-                                        <label for="gender_female">Female</label>                                
-                                    <!-- </div> -->
+                                    <input name="gender" type="radio" id="gender_female" value="female" class="with-gap radio-col-alcodir-blue" checked>
+                                    <label for="gender_female">Female</label>                                
+                                    @else
+                                    <input name="gender" type="radio" id="gender_male" value="male" class="with-gap radio-col-alcodir-blue" checked>
+                                    <label for="gender_male">Male</label>                                
+
+                                    <input name="gender" type="radio" id="gender_female" value="female" class="with-gap radio-col-alcodir-blue">
+                                    <label for="gender_female">Female</label>                                
+                                    @endif
+                                    
                                 </div>
                             </div>
                             
