@@ -185,9 +185,10 @@
                     </thead>
                     <tbody>
                         @foreach($linkedinConnects as $row)
-                        <tr>                            
+                        <tr>    
+                            
                             <td>{{ $row->position }}</td>                            
-                            <td>{{ $row->url }}</td>
+                            <td><a href="{{ $row->url }}" target="_blank">{{ $row->url }}</a></td>
                             <td>{{ $row->gender }}</td>
                             <td>{{ $row->user->name }}</td>
                             <td>{{ $row->created_at }}</td>
