@@ -7523,6 +7523,12 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
   -webkit-animation: ripple 0.2s linear forwards;
   animation: ripple 0.2s linear forwards; }
 
+[type="radio"].radio-col-alcodir-blue:checked + label:after {
+  background-color: #213160;
+  border-color: #213160;
+  -webkit-animation: ripple 0.2s linear forwards;
+  animation: ripple 0.2s linear forwards; }  
+
 [type="radio"].radio-col-blue:checked + label:after {
   background-color: #02bec9;
   border-color: #02bec9;
@@ -7668,11 +7674,23 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
   -webkit-animation: ripple 0.2s linear forwards;
   animation: ripple 0.2s linear forwards; }
 
+[type="radio"].with-gap.radio-col-alcodir-blue:checked + label:before {
+  border: 2px solid #213160;
+  -webkit-animation: ripple 0.2s linear forwards;
+  animation: ripple 0.2s linear forwards; }  
+
+[type="radio"].with-gap.radio-col-indigo:checked + label:after {
+  background-color: #213160;
+  border: 2px solid #213160;
+  -webkit-animation: ripple 0.2s linear forwards;
+  animation: ripple 0.2s linear forwards; }
+
 [type="radio"].with-gap.radio-col-indigo:checked + label:after {
   background-color: #3F51B5;
   border: 2px solid #3F51B5;
   -webkit-animation: ripple 0.2s linear forwards;
   animation: ripple 0.2s linear forwards; }
+
 
 [type="radio"].with-gap.radio-col-blue:checked + label:before {
   border: 2px solid #02bec9;

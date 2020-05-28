@@ -13,22 +13,66 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        
+    {   
+        $this->createSuperadmin();     
+        $this->createManagement();
         $this->createSoldier();
     }
 
-    
-
-    public function createSoldier()
+    public function createSuperadmin()
     {
         User::create([
-            'name' => 'januar',
+            'name' => 'superadmin',
+            'email' => 'superadmin@visiprop.com',
+            'password' => Hash::make('qwerty123'),
+        ]);
+    }
+
+    public function createManagement()
+    {
+        User::create([
+            'name' => 'Januar',
             'email' => 'januar@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Januar.jpg',
             'password' => Hash::make('qwerty123'),
         ]);
 
         User::create([
-            'name' => 'Rendy',
+            'name' => 'Gayuh',
+            'email' => 'gayuh@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Gayuh.jpg',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        User::create([
+            'name' => 'Rohmat',
+            'email' => 'rohmat@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Rohmat.jpg',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        User::create([
+            'name' => 'Donny',
+            'email' => 'donny@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Donny.jpg',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        User::create([
+            'name' => 'Teguh',
+            'email' => 'teguh@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Teguh.jpg',
+            'password' => Hash::make('qwerty123'),
+        ]);
+
+        
+    }
+
+    public function createSoldier()
+    {
+
+        User::create([
+            'name' => 'Rendy Ipangaribuan',
             'email' => 'rendy@visiprop.com',
             'photo_path' => 'alcodir\images\users\Rendy.jpg',
             'password' => Hash::make('rendykayukayu123'),

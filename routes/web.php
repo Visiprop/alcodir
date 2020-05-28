@@ -17,21 +17,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('/login', 'LoginController@index')->name('login');
+    Route::POST('/login/post', 'LoginController@loginPost')->name('login.post'); 
+    Route::POST('logout', 'LoginController@logout')->name('logout');
+});
 
 
 // Only authenticated users may enter...
-Route::get('/', 'HomeController@index')->name('dashboard');
-Route::get('/linkedin', 'LinkedinController@index')->name('linkedin');
-Route::post('/linkedin/submit', 'LinkedinController@submit')->name('linkedin.submit');
-Route::post('/absency/submit', 'AbsencyController@submit')->name('absency.submit');
+Route::group(['middleware' => 'auth'], function () {    
+    Route::get('/', 'HomeController@index')->name('dashboard');
 
-Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
-Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');
-Route::POST('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+    Route::get('/linkedin', 'LinkedinController@index')->name('linkedin');
+    Route::post('/linkedin/submit', 'LinkedinController@submit')->name('linkedin.submit');
+    Route::post('/absency/submit', 'AbsencyController@submit')->name('absency.submit');
+    
+    Route::get('/dailyreport', 'DailyReportController@index')->name('dailyreport');
+    Route::post('/dailyreport/submit', 'DailyReportController@submit')->name('dailyreport.submit');    
+    
+    Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
+    Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');
 
-Route::get('/dailyreport', 'DailyReportController@index')->name('dailyreport');
-Route::post('/dailyreport/submit', 'DailyReportController@submit')->name('dailyreport.submit');
+    Route::get('/management/dailyreport/dashboard', 'DailyReportController@indexAll')->name('management.dailyreport.dashboard');
+
+});
+
+
+
 
 
 

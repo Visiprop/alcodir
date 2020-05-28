@@ -59,7 +59,9 @@
                                 <div class="col-md-9">
                                     <select required name="soldier_id"class="form-control custom-select">
                                         @foreach($soldiers as $row)
+                                            @if($row->role[0]->id > 2)
                                             <option value="{{ $row->id }}">{{ $row->name }}</option>                                        
+                                            @endif
                                         @endforeach
                                     </select>
                                     <small class="form-control-feedback"> Select Soldier to Give VPoint. </small> </div>

@@ -2,53 +2,45 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Auth;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
     /**
-     * Where to redirect users after login.
+     * Handle an authentication attempt.
      *
-     * @var string
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return Response
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('guest')->except('logout');
+        return view('auth.login');
+    }
+    
+    public function loginPost(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (!Auth::attempt($credentials)) {
+            // Authentication fail...            
+            return Redirect::back();
+        }
+
+        // Authentication pass...
+        return redirect()->intended();            
+        
         
     }
 
-    /**
-     * Log the user out of the application.
-     *
-     * @param  Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function logout()
     {
-        // dd();
+        
         Auth::logout();        
         return redirect()->route('dashboard');
            

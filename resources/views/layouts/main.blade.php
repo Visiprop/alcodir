@@ -142,8 +142,11 @@
                 <!-- End User profile text-->
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
+                    
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap">SOLDIER</li>
+                        
+                        <li class="nav-small-cap">GENERAL</li>
+                        
                         <li>
                             <a href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                         </li>   
@@ -158,10 +161,24 @@
                                 <li><a class="text-muted">Quotation</a></li>                                
                             </ul>
                         </li> 
+
+                        @if(Auth::getUser()->role[0]->id == 2)
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap">MANAGEMENT</li>
                         <li>
-                            <!-- <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a> -->
-                        </li>                          
+                            <a href="{{ route('management.dailyreport.dashboard')}}" aria-expanded="false"><i class="fa fa-files-o"></i><span class="hide-menu">All Daily Report</span></a>
+                        </li>                                               
+                        <li>
+                            <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a>
+                        </li>                                                                       
+                        @endif
+
+                        
+                        
                     </ul>
+                    
+                    
+                    
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
