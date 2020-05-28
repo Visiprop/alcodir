@@ -12,13 +12,20 @@ class DailyReportController extends Controller
 
     
     public function index()
-    {      
-                        
+    {                              
         Auth::check();   
         $myDailyReport = DailyReport::whereDate('created_at', '=', date('Y-m-d'))->where('user_id', Auth::getUser()->id)->first();              
         $dailyReports = DailyReport::all();
-        return view('pages.dailyReport', compact('dailyReports','myDailyReport'));
-        
+        return view('pages.dailyReport', compact('dailyReports','myDailyReport'));        
+    }
+
+    public function indexAll()
+    {     
+        $dt = Carbon::parse();
+        $today = $dt->today()->toDateString();  
+
+        $dailyReports = DailyReport::all();
+        return view('pages.managements.dashboardDailyReport', compact('dailyReports','today'));        
     }
 
     public function submit(Request $req)

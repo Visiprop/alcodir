@@ -32,12 +32,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/linkedin/submit', 'LinkedinController@submit')->name('linkedin.submit');
     Route::post('/absency/submit', 'AbsencyController@submit')->name('absency.submit');
     
+    Route::get('/dailyreport', 'DailyReportController@index')->name('dailyreport');
+    Route::post('/dailyreport/submit', 'DailyReportController@submit')->name('dailyreport.submit');    
+    
     Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
     Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');
-    
-    Route::get('/dailyreport', 'DailyReportController@index')->name('dailyreport');
-    Route::post('/dailyreport/submit', 'DailyReportController@submit')->name('dailyreport.submit');
+
+    Route::get('/management/dailyreport/dashboard', 'DailyReportController@indexAll')->name('management.dailyreport.dashboard');
+
 });
+
 
 
 

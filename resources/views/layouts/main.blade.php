@@ -142,6 +142,16 @@
                 <!-- End User profile text-->
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
+                    
+                    @if(Auth::getUser()->role[0]->id == 2)
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">MANAGEMENT</li>
+                        <li>
+                            <a href="{{ route('management.dailyreport.dashboard')}}" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">All Daily Report</span></a>
+                        </li>                                               
+                    </ul>
+                    @endif
+                    
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">SOLDIER</li>
                         <li>
@@ -162,6 +172,7 @@
                             <!-- <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a> -->
                         </li>                          
                     </ul>
+                    
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
