@@ -165,6 +165,10 @@
                             </ul>
                         </li> 
 
+                        <li>
+                            <a href="{{ route('latepermit')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">Late Permit</span></a>
+                        </li> 
+
                         @if(Auth::getUser()->role[0]->id == 2)
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">MANAGEMENT</li>

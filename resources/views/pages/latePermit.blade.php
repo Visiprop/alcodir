@@ -46,7 +46,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-2">Late Entry Date</label>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                    <input name="date" type="date" class="form-control" placeholder="dd/mm/yyyy">
                                     <small class="form-control-feedback"> Late Date on </small> </div>
                             </div>
                         </div>
@@ -57,18 +57,13 @@
                         <div class="col-md-8">
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-2">Entry Time</label>                                
-                                <div class="col-md-9 input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                    <input id="timepicker" type="text" class="form-control" value="13:14">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                    </div>
+                                <div class="col-md-9">
+                                    <input name="time" type="text" placeholder="13:00" data-mask="99:99" class="form-control">                                                                        
                                 </div>
                             </div>
                         </div>
                         <!--/span-->                        
-                    </div>
-
-                    
+                    </div>                    
                     <!--/row-->                                        
                 </div>
                 <hr>
@@ -95,35 +90,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('material/plugins/moment/moment.js')}}"></script>
-    <!-- Clock Plugin JavaScript -->
-    <script src="{{ asset('material/plugins/clockpicker/dist/jquery-clockpicker.min.js')}}"></script>
-
-    <script>
-        $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
-        // Clock pickers
-        $('#single-input').clockpicker({
-            placement: 'bottom',
-            align: 'left',
-            autoclose: true,
-            'default': 'now'
-        });
-        $('.clockpicker').clockpicker({
-            donetext: 'Done',
-        }).find('input').change(function() {
-            console.log(this.value);
-        });
-        $('#check-minutes').click(function(e) {
-            // Have to stop propagation here
-            e.stopPropagation();
-            input.clockpicker('show').clockpicker('toggleView', 'minutes');
-        });
-        if (/mobile/i.test(navigator.userAgent)) {
-            $('input').prop('readOnly', true);
-        }
-    </script>
-
-
-
+    <script src="{{ asset('material/js/mask.js')}}"></script>
+      
     <script>$('#latePermitTable').DataTable();</script>
 @endsection

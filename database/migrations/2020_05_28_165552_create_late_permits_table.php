@@ -19,9 +19,9 @@ class CreateLatePermitsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();            
             $table->string('reason');
-            $table->date('date');
+            $table->timestamp('date')->nullable();
             $table->integer('status')->nullable();            
-            $table->timestamps();           
+            $table->timestamps();  
 
             $table->foreign('user_id')->references('id')->on('users');
             
