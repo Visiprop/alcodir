@@ -34,8 +34,8 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-2">Reason</label>
                                 <div class="col-md-9">
-                                    <textarea required name="reason" class="form-control" rows="5"></textarea>
-                                    <small class="form-control-feedback"> Reason to Late </small> 
+                                    <textarea required name="reason" class="form-control" rows="5" maxlength="300"></textarea>
+                                    <small class="form-control-feedback"> Reason to Late (Max 300 Char)</small> 
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-2">Late Entry Date</label>
                                 <div class="col-md-9">
-                                    <input name="date" type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                    <input required name="date" type="date" class="form-control" placeholder="dd/mm/yyyy">
                                     <small class="form-control-feedback"> Late Date on </small> </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             <div class="form-group row">
                                 <label class="control-label text-right col-md-2">Entry Time</label>                                
                                 <div class="col-md-9">
-                                    <input name="time" type="text" placeholder="13:00" data-mask="99:99" class="form-control">                                                                        
+                                    <input required name="time" type="text" placeholder="13:00" data-mask="99:99" class="form-control">                                                                        
                                 </div>
                             </div>
                         </div>
@@ -85,6 +85,48 @@
     </div>
 </div>
 <!-- End Form -->
+
+<!-- Start Table -->
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">My Late Permit Table</h4>            
+            <div class="table-responsive m-t-40">
+                <table id="linkedinTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>                            
+                            <th>Reason</th>                            
+                            <th>Late Date</th>
+                            <th>Status</th>
+                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($latePermits as $row)
+                        <tr>    
+                            
+                            <td>{{ Str::limit($row->reason, $limit = 50, $end = '...') }}</td>                                                        
+                            <td>{{ $row->date }}</td>
+                            @if($row->status === 0)
+                            <td><span class="badge badge-warning">Waiting</span></td>
+                            @elseif($row->status === 1)
+                            <td><span class="badge badge-success">Permited</span></td>
+                            @else
+                            <td><span class="badge badge-danger">Rejected</span></td>
+                            @endif
+                            
+                        </tr>                        
+                        @endforeach
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<!-- End Table -->
 
 
 @endsection

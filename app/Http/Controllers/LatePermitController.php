@@ -10,8 +10,15 @@ class LatePermitController extends Controller
 {
     //
     public function index()
-    {                      
-        return view('pages.latePermit');
+    {            
+        $latePermits = LatePermit::where('user_id', Auth::getUser()->id)->get();          
+        return view('pages.latePermit', compact('latePermits'));
+    }
+
+    public function indexAll()
+    {            
+        $latePermits = LatePermit::all();          
+        return view('pages.managements.dashboardLatePermit', compact('latePermits'));
     }
 
     public function submit(Request $req)
@@ -25,12 +32,31 @@ class LatePermitController extends Controller
                 'user_id'       => Auth::getUser()->id,
                 'reason'       => $req->reason,
                 'date'       => $date,                
+                'status'       => 0,  
                 'created_at' => date('Y-m-d H:i:s')                
             ]; 
 
             $latePermit = LatePermit::create($data);
 
             return redirect()->route('latepermit');
+        }
+    }
+
+    public function action(Request $req)
+    {   
+        // dd($status);                     
+        // dd($id);
+
+        if(Auth::check()) {
+
+            $latePermit = LatePermit::where('id', '=', $req->id)->first();          
+            $data = [
+                'status' => $req->status,                        
+            ];        
+
+            $latePermit->update($data);
+
+            return redirect()->route('management.latepermit.dashboard');
         }
     }
 
