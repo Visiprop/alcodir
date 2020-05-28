@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/dailyreport', 'DailyReportController@index')->name('dailyreport');
     Route::post('/dailyreport/submit', 'DailyReportController@submit')->name('dailyreport.submit');    
+
+    Route::get('/latepermit', 'LatePermitController@index')->name('latepermit');
+    Route::get('/latepermit/submit', 'LatePermitController@submit')->name('latepermit.submit');
     
     Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
     Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');

@@ -13,6 +13,9 @@
     <title>ALCODIR</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('material/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet">
+    <!-- Page plugins css -->
+    <link href="{{ asset('material/plugins/clockpicker/dist/jquery-clockpicker.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('material/css/alcodir-style.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
