@@ -13,6 +13,9 @@
     <title>ALCODIR</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('material/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet">
+    <!-- Page plugins css -->
+    <link href="{{ asset('material/plugins/clockpicker/dist/jquery-clockpicker.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('material/css/alcodir-style.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
@@ -162,12 +165,19 @@
                             </ul>
                         </li> 
 
+                        <li>
+                            <a href="{{ route('latepermit')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">Late Permit</span></a>
+                        </li> 
+
                         @if(Auth::getUser()->role[0]->id == 2)
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">MANAGEMENT</li>
                         <li>
                             <a href="{{ route('management.dailyreport.dashboard')}}" aria-expanded="false"><i class="fa fa-files-o"></i><span class="hide-menu">All Daily Report</span></a>
-                        </li>                                               
+                        </li>
+                        <li>
+                            <a href="{{ route('management.latepermit.dashboard')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">All Late Permit</span></a>
+                        </li>                                    
                         <li>
                             <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a>
                         </li>                                                                       
