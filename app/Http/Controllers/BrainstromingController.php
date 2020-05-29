@@ -14,7 +14,7 @@ class BrainstromingController extends Controller
     public function index()
     {                              
         Auth::check();   
-        $brainstromings = Brainstroming::all()->get();        
+        $brainstromings = Brainstroming::all();        
         $users = User::all();        
         return view('pages.superadmins.brainstroming', compact('brainstromings', 'users'));        
     }
