@@ -159,7 +159,7 @@
                             </li>   
                             
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Sales</span></a>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-usd"></i><span class="hide-menu">Sales</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a class="mdi mdi-linkedin-box" href="{{ route('linkedin')}}">LinkedIn</a></li>
                                     <li><a class="text-muted">Quotation</a></li>                                
