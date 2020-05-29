@@ -188,8 +188,10 @@
                             
                             <li>
                                 <a href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('superadmin.brainstroming')}}" aria-expanded="false"><i class="fa fa-group"></i><span class="hide-menu">Brainstroming</span></a>
                             </li>   
-
                         @endif
 
                         

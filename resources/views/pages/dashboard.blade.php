@@ -95,8 +95,7 @@
 <!-- Start Absency -->
 <div class="col-xl-3">
     <div class="card earning-widget">
-        <div class="card-header">
-            
+        <div class="card-header">            
             <h4 class="card-title m-b-0">Today Absency Board <span style="font-size: 13px;"><i>{{now()->format('d-m-Y')}}</i></span></h4>
         </div>
         <div class="card-body b-t collapse show">
@@ -119,6 +118,38 @@
             </table>
         </div>
     </div>    
+</div>
+<!-- End Absency -->
+
+<!-- Start Brainstroming -->
+<div class="col-lg-6">
+    <div class="card earning-widget">
+        <div class="card-header">            
+            <h4 class="card-title m-b-0">Brainstroming Board </h4>
+        </div>
+        <div class="card-body b-t collapse show">
+            <table class="table v-middle no-border">
+                <tbody>
+                    @foreach($brainstromings as $row)
+                    <tr>
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-2"><span class="round"><img src="{{ $row->user->photo_path}}" alt="user" width="50"></span></div>
+                            <div class="comment-text w-100">
+                                <h5>{{ $row->user->name}}</h5>
+                                <h6>"{{ $row->title}}"</h6>
+                                <p class="m-b-5">{{ $row->description}}</p>
+                                <div class="comment-footer"> <span class="text-muted pull-right">{{ \Carbon\Carbon::parse($row->date)->format('H:i:s d-m-Y')}}</span></div>
+                                
+                            </div>
+                        </div>
+                    </tr> 
+                    
+                    @endforeach                                                       
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
 </div>
 <!-- End Absency -->
 

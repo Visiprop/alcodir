@@ -54,7 +54,8 @@ Route::group(['middleware' => ['auth','role.management']], function () {
 // Only authenticated users and has superadmin role may enter...
 Route::group(['middleware' => ['auth','role.superadmin']], function () {        
     
-    // Route::get('/superadmin', 'HomeController@indexSuperadmin')->name('superadmin.dashboard');
+    Route::get('/superadmin/brainstroming', 'BrainstromingController@index')->name('superadmin.brainstroming');
+    Route::post('/superadmin/brainstroming/submit', 'BrainstromingController@submit')->name('superadmin.brainstroming.submit');
 
 });
 
