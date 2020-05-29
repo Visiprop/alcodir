@@ -51,6 +51,12 @@ Route::group(['middleware' => ['auth','role.management']], function () {
 
 });
 
+// Only authenticated users and has superadmin role may enter...
+Route::group(['middleware' => ['auth','role.superadmin']], function () {        
+    
+    // Route::get('/superadmin', 'HomeController@indexSuperadmin')->name('superadmin.dashboard');
+
+});
 
 
 

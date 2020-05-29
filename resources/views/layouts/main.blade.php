@@ -148,39 +148,48 @@
                     
                     <ul id="sidebarnav">
                         
-                        <li class="nav-small-cap">GENERAL</li>
-                        
-                        <li>
-                            <a href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>   
-                        <li>
-                            <a href="{{ route('dailyreport')}}" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Report</span></a>
-                        </li>   
-                        
-                        <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Sales</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a class="mdi mdi-linkedin-box" href="{{ route('linkedin')}}">LinkedIn</a></li>
-                                <li><a class="text-muted">Quotation</a></li>                                
-                            </ul>
-                        </li> 
+                        @if(!Auth::getUser()->hasRole(1))
+                            <li class="nav-small-cap">GENERAL</li>
+                            
+                            <li>
+                                <a href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            </li>   
+                            <li>
+                                <a href="{{ route('dailyreport')}}" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Report</span></a>
+                            </li>   
+                            
+                            <li>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Sales</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a class="mdi mdi-linkedin-box" href="{{ route('linkedin')}}">LinkedIn</a></li>
+                                    <li><a class="text-muted">Quotation</a></li>                                
+                                </ul>
+                            </li> 
 
-                        <li>
-                            <a href="{{ route('latepermit')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">Late Permit</span></a>
-                        </li> 
+                            <li>
+                                <a href="{{ route('latepermit')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">Late Permit</span></a>
+                            </li> 
 
-                        @if(Auth::getUser()->hasRole(2))
-                        <li class="nav-devider"></li>                        
-                        <li class="nav-small-cap">MANAGEMENT</li>
-                        <li>
-                            <a href="{{ route('management.dailyreport.dashboard')}}" aria-expanded="false"><i class="fa fa-files-o"></i><span class="hide-menu">All Daily Report</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('management.latepermit.dashboard')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">All Late Permit</span></a>
-                        </li>                                    
-                        <li>
-                            <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a>
-                        </li>                                                                       
+                            @if(Auth::getUser()->hasRole(2))
+                            <li class="nav-devider"></li>                        
+                            <li class="nav-small-cap">MANAGEMENT</li>
+                            <li>
+                                <a href="{{ route('management.dailyreport.dashboard')}}" aria-expanded="false"><i class="fa fa-files-o"></i><span class="hide-menu">All Daily Report</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('management.latepermit.dashboard')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">All Late Permit</span></a>
+                            </li>                                    
+                            <li>
+                                <a href="{{ route('management.vpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">VPoint</span></a>
+                            </li>                                                                       
+                            @endif
+                        @else
+                            <li class="nav-small-cap">SUPERADMIN</li>
+                            
+                            <li>
+                                <a href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            </li>   
+
                         @endif
 
                         
