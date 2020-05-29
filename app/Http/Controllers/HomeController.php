@@ -23,7 +23,7 @@ class HomeController extends Controller
         $suleLC = LinkedinConnect::where('user_id','4')->count();
 
         return view('pages.dashboard',compact('todayAbsencies','myAbsency','rendyLC','syaekhuLC','suleLC'));
-        // return view('/home');
+        
     }
 
 }

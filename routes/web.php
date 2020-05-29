@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('/login', 'LoginController@index')->name('login');
@@ -37,6 +34,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/latepermit', 'LatePermitController@index')->name('latepermit');
     Route::post('/latepermit/submit', 'LatePermitController@submit')->name('latepermit.submit');
+    
+    
+});
+
+// Only authenticated users and has management role may enter...
+Route::group(['middleware' => ['auth','role.management']], function () {        
     
     Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
     Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');

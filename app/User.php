@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -37,9 +39,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
-        return $this->belongsToMany('App\Role', 'role_users');
-    }
+    
 
     public function absency()
 	{
@@ -59,4 +59,28 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\DailyReport');
     }
+
+    public function roles(){
+        return $this->belongsToMany('App\Role', 'role_users');
+    }
+
+    
+    /***
+     * @param $role
+     * @return mixed
+     */
+    public function hasRole($role_id)
+    {
+        
+        $user = User::where('id', '=', $this->id )->whereHas('roles', function ($query) use($role_id){
+            $query->where('role_id', '=', $role_id);
+        })->first();     
+
+        if($user)
+            return true;
+
+        return false;
+    }
+
+    
 }

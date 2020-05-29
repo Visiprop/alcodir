@@ -59,7 +59,7 @@
                                 <div class="col-md-9">
                                     <select required name="soldier_id"class="form-control custom-select">
                                         @foreach($soldiers as $row)
-                                            @if($row->role[0]->id > 2)
+                                            @if($row->hasRole(3))
                                             <option value="{{ $row->id }}">{{ $row->name }}</option>                                        
                                             @endif
                                         @endforeach

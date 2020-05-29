@@ -169,8 +169,8 @@
                             <a href="{{ route('latepermit')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">Late Permit</span></a>
                         </li> 
 
-                        @if(Auth::getUser()->role[0]->id == 2)
-                        <li class="nav-devider"></li>
+                        @if(Auth::getUser()->hasRole(2))
+                        <li class="nav-devider"></li>                        
                         <li class="nav-small-cap">MANAGEMENT</li>
                         <li>
                             <a href="{{ route('management.dailyreport.dashboard')}}" aria-expanded="false"><i class="fa fa-files-o"></i><span class="hide-menu">All Daily Report</span></a>
