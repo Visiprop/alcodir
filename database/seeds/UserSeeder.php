@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'superadmin',
             'email' => 'superadmin@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Superadmin.jpg',
             'password' => Hash::make('qwerty123'),
         ]);
     }
