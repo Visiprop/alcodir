@@ -5696,7 +5696,9 @@ File: scss
   margin-bottom: 10px; }
   .comment-widgets .comment-row {
     border-left: 3px solid #ffffff;
-    padding: 15px; }
+    padding: 15px; 
+    padding-bottom: 0px;
+    padding-top: 5px; }
     .comment-widgets .comment-row:hover, .comment-widgets .comment-row.active {
       border-color: #009efb; }
 

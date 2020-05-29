@@ -6,7 +6,7 @@
     <div class="col-md-5 col-8 align-self-center">
         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Soldier</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">General</a></li>
             <!-- <li class="breadcrumb-item active">soldier</li> -->
         </ol>
     </div>
@@ -15,49 +15,50 @@
 @endsection
 
 @section('content')
-<!-- Start Absency -->
-
-<div class="col-12">                    
-    <div class="card text-center">
-        <div class="card-header">
-            Daily Absency 
-        </div>
-        <div class="card-body">
-            <div class="row ">
-                <div class="col-md-6 offset-md-3">
-                <h4 id="quoteText" class="card-title"></h4>
-                </div>
-            </div>            
-            <p class="card-text"><i id="quoteAuthor"></i></p>
-            <form action="{{ route('absency.submit') }}" method="POST" class="form-horizontal">
-                @csrf                
-                @empty($myAbsency)     
-                    @if(\Carbon\Carbon::parse(now())->hour >= 9)               
-                    <button type="submit" class="btn btn-success">Absent</button>                                            
+@if(!Auth::getUser()->hasRole(1))
+    <!-- Start Absency -->
+    <div class="col-12">                    
+        <div class="card text-center">
+            <div class="card-header">
+                Daily Absency 
+            </div>
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-md-6 offset-md-3">
+                    <h4 id="quoteText" class="card-title"></h4>
+                    </div>
+                </div>            
+                <p class="card-text"><i id="quoteAuthor"></i></p>
+                <form action="{{ route('absency.submit') }}" method="POST" class="form-horizontal">
+                    @csrf                
+                    @empty($myAbsency)     
+                        @if(\Carbon\Carbon::parse(now())->hour >= 9)               
+                        <button type="submit" class="btn btn-success">Absent</button>                                            
+                        @endif
+                    @endempty
+                </form>
+            </div>
+            <div class="card-footer text-muted">            
+                @isset($myAbsency)
+                    @if($myAbsency->status === 1)
+                        Late
+                    @else
+                        On Time
+                    @endif
+                @endisset
+                @empty($myAbsency)                    
+                    @if(\Carbon\Carbon::parse(now())->hour > 9)               
+                        Open
+                    @else
+                        Close
                     @endif
                 @endempty
-            </form>
+                
+            </div>
         </div>
-        <div class="card-footer text-muted">            
-            @isset($myAbsency)
-                @if($myAbsency->status === 1)
-                    Late
-                @else
-                    On Time
-                @endif
-            @endisset
-            @empty($myAbsency)                    
-                @if(\Carbon\Carbon::parse(now())->hour > 9)               
-                    Open
-                @else
-                    Close
-                @endif
-            @endempty
-            
-        </div>
-    </div>
-</div>    
-<!-- End Absency -->        
+    </div>    
+    <!-- End Absency -->        
+@endif
 
 <!-- Start Monthly Point -->
 <div class="col-xl-3">
@@ -94,8 +95,7 @@
 <!-- Start Absency -->
 <div class="col-xl-3">
     <div class="card earning-widget">
-        <div class="card-header">
-            
+        <div class="card-header">            
             <h4 class="card-title m-b-0">Today Absency Board <span style="font-size: 13px;"><i>{{now()->format('d-m-Y')}}</i></span></h4>
         </div>
         <div class="card-body b-t collapse show">
@@ -118,6 +118,38 @@
             </table>
         </div>
     </div>    
+</div>
+<!-- End Absency -->
+
+<!-- Start Brainstroming -->
+<div class="col-lg-6">
+    <div class="card earning-widget">
+        <div class="card-header">            
+            <h4 class="card-title m-b-0">Brainstroming Board </h4>
+        </div>
+        <div class="card-body b-t collapse show">
+            <table class="table v-middle no-border">
+                <tbody>
+                    @foreach($brainstromings as $row)
+                    <tr>
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-2"><span class="round"><img src="{{ $row->user->photo_path}}" alt="user" width="50"></span></div>
+                            <div class="comment-text w-100">
+                                <h5>{{ $row->user->name}}</h5>
+                                <h6>"{{ $row->title}}"</h6>
+                                <p class="m-b-5">{{ $row->description}}</p>
+                                <div class="comment-footer"> <span class="text-muted pull-right">{{ \Carbon\Carbon::parse($row->date)->format('H:i:s d-m-Y')}}</span></div>
+                                
+                            </div>
+                        </div>
+                    </tr> 
+                    
+                    @endforeach                                                       
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
 </div>
 <!-- End Absency -->
 
