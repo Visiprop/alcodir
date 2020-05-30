@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-@if(!Auth::getUser()->hasRole(1))
+@if(!Auth::getUser()->hasRole(1) && !\Carbon\Carbon::now()->isWeekend())
     <!-- Start Absency -->
     <div class="col-12">                    
         <div class="card text-center">
@@ -138,7 +138,7 @@
                                 <h5>{{ $row->user->name}}</h5>
                                 <h6>"{{ $row->title}}"</h6>
                                 <p class="m-b-5">{{ $row->description}}</p>
-                                <div class="comment-footer"> <span class="text-muted pull-right">{{ \Carbon\Carbon::parse($row->date)->format('H:i:s d-m-Y')}}</span></div>
+                                <div class="comment-footer"> <span class="badge badge-success pull-right">{{ \Carbon\Carbon::parse($row->date)->format('H:i:s d-m-Y')}}</span></div>
                                 
                             </div>
                         </div>
