@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/latepermit', 'LatePermitController@index')->name('latepermit');
     Route::post('/latepermit/submit', 'LatePermitController@submit')->name('latepermit.submit');
+
+    //My VPoint
+    Route::get('/vpoint/myvpoint', 'VPointRequestController@myVPoint')->name('vpoint.myvpoint');
     
     
 });
@@ -43,6 +46,8 @@ Route::group(['middleware' => ['auth','role.management']], function () {
     
     Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
     Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');
+    Route::put('/management/vpoint/review', 'VPointRequestController@review')->name('management.vpoint.review');
+    
 
     Route::get('/management/dailyreport/dashboard', 'DailyReportController@indexAll')->name('management.dailyreport.dashboard');
     
@@ -50,6 +55,8 @@ Route::group(['middleware' => ['auth','role.management']], function () {
     Route::put('/management/latepermit/action', 'LatePermitController@action')->name('management.latepermit.action');
 
 });
+
+
 
 // Only authenticated users and has superadmin role may enter...
 Route::group(['middleware' => ['auth','role.superadmin']], function () {        
