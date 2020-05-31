@@ -87,7 +87,7 @@
                                 <label class="control-label text-right col-md-3">Reason</label>
                                 <div class="col-md-9">
                                     <!-- <input required name="reason" type="text" class="form-control" > -->
-                                    <textarea required name="reason"class="form-control" rows="5"></textarea>
+                                    <textarea required name="reason"class="form-control" rows="5" maxlength="100"></textarea>
                                     <small class="form-control-feedback"> Reason to Give VPoint</small> </div>
                             </div>
                         </div>
