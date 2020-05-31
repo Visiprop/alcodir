@@ -38,4 +38,19 @@ class VPointRequestController extends Controller
             return redirect()->route('management.vpoint');
         }
     }
+
+    public function review(Request $req)
+    {        
+        if(Auth::check()) {
+
+            $vpointRequest = VPointRequest::where('id', '=', $req->id)->first();          
+            $data = [
+                'status' => $req->status,                        
+            ];        
+
+            $vpointRequest->update($data);
+
+            return redirect()->route('management.vpoint');
+        }
+    }
 }
