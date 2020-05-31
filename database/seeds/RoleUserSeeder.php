@@ -19,26 +19,32 @@ class RoleUserSeeder extends Seeder
         
         //
 
-        //Create super admin
+        // //Create super admin
+        // RoleUser::create([
+        //     'user_id' => 1,
+        //     'role_id' => 1,
+        // ]);
+
+        // //Create Management
+        // for ($i=2; $i < 7 ; $i++) { 
+        //     RoleUser ::create([
+        //         'user_id' => $i,
+        //         'role_id' => 2,
+        //     ]);
+        // }
+
+        // //Create Soldier
+        // for ($i=7; $i < 10 ; $i++) { 
+        //     RoleUser ::create([
+        //         'user_id' => $i,
+        //         'role_id' => 3,
+        //     ]);
+        // }
+
+        //Create Israndy
         RoleUser::create([
-            'user_id' => 1,
-            'role_id' => 1,
+            'user_id' => 11,
+            'role_id' => 2,
         ]);
-
-        //Create Management
-        for ($i=2; $i < 7 ; $i++) { 
-            RoleUser ::create([
-                'user_id' => $i,
-                'role_id' => 2,
-            ]);
-        }
-
-        //Create Soldier
-        for ($i=7; $i < 10 ; $i++) { 
-            RoleUser ::create([
-                'user_id' => $i,
-                'role_id' => 3,
-            ]);
-        }
     }
 }
