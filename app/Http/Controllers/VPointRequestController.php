@@ -53,4 +53,18 @@ class VPointRequestController extends Controller
             return redirect()->route('management.vpoint');
         }
     }
+
+    public function myVPoint(Request $req)
+    {        
+        if(Auth::check()) {
+
+            $myVPointRequests = VPointRequest::where([
+                ['sldr_user_id', '=', Auth::getUser()->id],
+                ['status', '=', 1],                
+            ])->get();          
+                        
+
+            return view('pages.myVPoint', compact('myVPointRequests'));
+        }
+    }
 }

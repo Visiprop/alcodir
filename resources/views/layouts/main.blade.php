@@ -170,6 +170,10 @@
                                 <a href="{{ route('latepermit')}}" aria-expanded="false"><i class="fa fa-moon-o"></i><span class="hide-menu">Late Permit</span></a>
                             </li> 
 
+                            <li>
+                                <a href="{{ route('vpoint.myvpoint')}}" aria-expanded="false"><i class="fa fa-dot-circle-o"></i><span class="hide-menu">My VPoint</span></a>
+                            </li> 
+
                             @if(Auth::getUser()->hasRole(2))
                             <li class="nav-devider"></li>                        
                             <li class="nav-small-cap">MANAGEMENT</li>
