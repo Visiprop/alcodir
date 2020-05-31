@@ -121,6 +121,12 @@
         <div class="card-body">
             <h4 class="card-title">VPoint Request Table</h4>
             <!-- <h6 class="card-subtitle">Please check name before connect to Avoid Redundant Connect</h6> -->
+            <form id="vpointActionForm" action="{{ route('management.vpoint.review') }}" method="post" class="form-horizontal">
+                @csrf   
+                {{ method_field('PUT') }}
+                <input hidden id="id" name="id" type="number">  
+                <input hidden id="status" name="status" type="number">  
+            </form>
             <div class="table-responsive m-t-40">
                 <table id="vpointTable" class="table table-bordered table-striped">
                     <thead>
@@ -142,7 +148,8 @@
                             <td>{{ $row->reason }}</td>
                             <td>{{ $row->point }}</td>
                             <td>{{ $row->created_at }}</td>
-                            <td>                                                                
+                            <td>  
+                                <!-- <i class="fa fa-close text-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom" ></i> -->                                                                
                                 @if($row->status === 0)
                                     <span class="badge badge-warning">Waiting</span>
                                 @elseif($row->status === 1)
@@ -153,8 +160,8 @@
                             </td>                            
                             @if($row->status === 0)
                             <td>                                
-                                <button type="button" class="btn waves-effect waves-light btn-info" data-toggle="tooltip" data-original-title="Approve" aria-describedby="tooltip776767"><i class="ti-check" aria-hidden="true"></i></button>
-                                <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="tooltip" data-original-title="Reject" aria-describedby="tooltip776767"><i class="ti-close" aria-hidden="true"></i></button>
+                                <button onclick="submitForm({{ $row->id }},1)" type="button" class="btn waves-effect waves-light btn-info" data-toggle="tooltip" data-original-title="Approve" aria-describedby="tooltip776767"><i class="ti-check" aria-hidden="true"></i></button>
+                                <button onclick="submitForm({{ $row->id }},2)" type="button" class="btn waves-effect waves-light btn-danger" data-toggle="tooltip" data-original-title="Reject" aria-describedby="tooltip776767"><i class="ti-close" aria-hidden="true"></i></button>
                             </td>
                             @else 
                             <td>                                
@@ -176,6 +183,14 @@
 @endsection
 
 @section('script')
-    
+    <script type="text/javascript">
+        function submitForm(id, status) {
+            document.getElementById("id").value = id
+            document.getElementById("status").value = status       
+            // $("#permitActionForm").submit()
+            document.getElementById("vpointActionForm").submit()
+        }
+    </script>
+
     <script>$('#vpointTable').DataTable();</script>
 @endsection

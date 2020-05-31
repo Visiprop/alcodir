@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth','role.management']], function () {
     
     Route::get('/management/vpoint', 'VPointRequestController@index')->name('management.vpoint');
     Route::post('/management/vpoint/submit', 'VPointRequestController@submit')->name('management.vpoint.submit');
+    Route::put('/management/vpoint/review', 'VPointRequestController@review')->name('management.vpoint.review');
+    
 
     Route::get('/management/dailyreport/dashboard', 'DailyReportController@indexAll')->name('management.dailyreport.dashboard');
     
