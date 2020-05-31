@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {   
-        $this->createSuperadmin();     
-        $this->createManagement();
+        // $this->createSuperadmin();     
+        // $this->createManagement();
         $this->createSoldier();
     }
 
@@ -72,25 +72,32 @@ class UserSeeder extends Seeder
     public function createSoldier()
     {
 
-        User::create([
-            'name' => 'Rendy Ipangaribuan',
-            'email' => 'rendy@visiprop.com',
-            'photo_path' => 'alcodir\images\users\Rendy.jpg',
-            'password' => Hash::make('rendykayukayu123'),
-        ]);
+        // User::create([
+        //     'name' => 'Rendy Ipangaribuan',
+        //     'email' => 'rendy@visiprop.com',
+        //     'photo_path' => 'alcodir\images\users\Rendy.jpg',
+        //     'password' => Hash::make('rendykayukayu123'),
+        // ]);
+
+        // User::create([
+        //     'name' => 'Syaekhu',
+        //     'email' => 'syaekhu@visiprop.com',
+        //     'photo_path' => 'alcodir\images\users\Syaekhu.jpg',
+        //     'password' => Hash::make('syaekhukayukayu123'),
+        // ]);
+
+        // User::create([
+        //     'name' => 'Zulkifli',
+        //     'email' => 'zulkifli@visiprop.com',
+        //     'photo_path' => 'alcodir\images\users\Zulkifli.jpg',
+        //     'password' => Hash::make('zulkiflikayukayu123'),
+        // ]);
 
         User::create([
-            'name' => 'Syaekhu',
-            'email' => 'syaekhu@visiprop.com',
-            'photo_path' => 'alcodir\images\users\Syaekhu.jpg',
-            'password' => Hash::make('syaekhukayukayu123'),
-        ]);
-
-        User::create([
-            'name' => 'Zulkifli',
-            'email' => 'zulkifli@visiprop.com',
-            'photo_path' => 'alcodir\images\users\Zulkifli.jpg',
-            'password' => Hash::make('zulkiflikayukayu123'),
+            'name' => 'Israndy',
+            'email' => 'israndy@visiprop.com',
+            'photo_path' => 'alcodir\images\users\Israndy.jpg',
+            'password' => Hash::make('gemini86'),
         ]);
     }
 
