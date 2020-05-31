@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\DailyReport;
+use App\Task;
 
 class DailyReportController extends Controller
 {
@@ -53,6 +54,13 @@ class DailyReportController extends Controller
 
             $dailyReport = DailyReport::create($data);
 
+            $tempIndex = explode('/', $req->indexes);
+            foreach ($tempIndex as &$value) {
+                Task::create([
+                    'daily_report_id'   => $dailyReport->id,
+                    'value'             => $req->{'indexTask_'.$value}
+                ]);
+            }
             return redirect()->route('dailyreport');
         }
     }
