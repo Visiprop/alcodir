@@ -17,7 +17,7 @@
 @section('content')
 
 <!-- Start Monthly Point -->
-<div class="col-xl-6">
+<div class="col-xl-12">
     <div class="card earning-widget">
         <div class="card-header">            
             <h4 class="card-title m-b-0">VPoint Board</h4>
@@ -26,7 +26,7 @@
             <table class="table v-middle no-border">
                 <tbody>
                     @foreach($myVPointRequests as $row)
-                    <tr>                        
+                    <tr>                              
                         <td>{{ $row->reason }}</td>
                         <td align="right"><span class="label label-light-info">{{$row->point}}</span></td>
                     </tr>   
