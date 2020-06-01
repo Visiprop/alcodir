@@ -31,7 +31,7 @@
                             @php($count++) 
                         @endif
                     @endforeach
-                    @if($count > 35)
+                    @if($count > 34)
                         <h3 class="m-b-0 font-light text-success">
                         {{ $count }}
                         </h3>
