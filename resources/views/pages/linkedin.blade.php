@@ -25,15 +25,21 @@
             <div class="d-flex flex-row">
                 <div class="round round-lg align-self-center round-info"><i class="ti-user"></i></div>
                 <div class="m-l-10 align-self-center">
-                    <h3 class="m-b-0 font-light">
                     @php($count=0) 
-                        @foreach ($linkedinConnects as $row)                            
-                            @if(\Carbon\Carbon::parse($row->created_at)->format('d/m/Y') === \Carbon\Carbon::parse($today)->format('d/m/Y') && Auth::getUser()->id === $row->user_id)
-                                @php($count++) 
-                            @endif
-                        @endforeach
-                    {{ $count }}
-                    </h3>
+                    @foreach ($linkedinConnects as $row)                            
+                        @if(\Carbon\Carbon::parse($row->created_at)->format('d/m/Y') === \Carbon\Carbon::parse($today)->format('d/m/Y') && Auth::getUser()->id === $row->user_id)
+                            @php($count++) 
+                        @endif
+                    @endforeach
+                    @if($count > 35)
+                        <h3 class="m-b-0 font-light text-success">
+                        {{ $count }}
+                        </h3>
+                    @else
+                        <h3 class="m-b-0 font-light">
+                        {{ $count }}
+                        </h3>
+                    @endif
                     <h5 class="text-muted m-b-0">Connected Today</h5></div>
             </div>            
         </div>        
