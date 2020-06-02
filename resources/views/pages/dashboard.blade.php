@@ -93,7 +93,7 @@
 <!-- End Monthly Point -->
 
 <!-- Start Absency -->
-<div class="col-xl-3">
+<div class="col-xl-4">
     <div class="card earning-widget">
         <div class="card-header">            
             <h4 class="card-title m-b-0">Today Absency Board <span style="font-size: 13px;"><i>{{now()->format('d-m-Y')}}</i></span></h4>
@@ -120,6 +120,7 @@
     </div>    
 </div>
 <!-- End Absency -->
+
 
 <!-- Start Brainstroming -->
 <div class="col-lg-6">
@@ -151,7 +152,8 @@
         </div>
     </div>
 </div>
-<!-- End Absency -->
+<!-- End Brainstroming -->
+
 
 
 @endsection
