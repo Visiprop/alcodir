@@ -40,4 +40,30 @@ class BrainstromingController extends Controller
             return redirect()->route('superadmin.brainstroming');
         }
     }
+
+    public function finish(Request $req)
+    {        
+        // dd($req);
+        if(Auth::check()) {
+
+            $brainstroming = Brainstroming::find($req->id);          
+            $data = [
+                'status' => 1,                        
+            ];        
+
+            $brainstroming->update($data);
+            
+            return redirect()->route('superadmin.brainstroming');
+        }
+    }
+
+    public function destroy($id)
+    {        
+        // dd($req);
+        if(Auth::check()) {
+
+            $brainstroming = Brainstroming::find($id)->delete();                                            
+            return redirect()->route('superadmin.brainstroming');
+        }
+    }
 }

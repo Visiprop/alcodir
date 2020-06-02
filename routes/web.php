@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth','role.superadmin']], function () {
     
     Route::get('/superadmin/brainstroming', 'BrainstromingController@index')->name('superadmin.brainstroming');
     Route::post('/superadmin/brainstroming/submit', 'BrainstromingController@submit')->name('superadmin.brainstroming.submit');
+    Route::put('/superadmin/brainstroming/finish', 'BrainstromingController@finish')->name('superadmin.brainstroming.finish');
+    Route::get('/superadmin/brainstroming/delete/{id}', 'BrainstromingController@destroy')->name('superadmin.brainstroming.destroy');
 
 });
 

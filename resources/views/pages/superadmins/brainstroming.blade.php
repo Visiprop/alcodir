@@ -124,6 +124,11 @@
             <h4 class="card-title">Brainstroming Table</h4>
             <!-- <h6 class="card-subtitle">Please check name before connect to Avoid Redundant Connect</h6> -->
             <div class="table-responsive m-t-40">
+                <form id="actionFinish" action="{{ route('superadmin.brainstroming.finish') }}" method="POST" class="form-horizontal">
+                    @csrf
+                    {{ method_field('PUT') }}
+                    <input hidden id="id" name="id" type="number">  
+                </form>                
                 <table id="brainstromingTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>                            
@@ -131,7 +136,7 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th>Date</th>
-                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,9 +145,14 @@
                             
                             <td>{{ $row->user->name }}</td>                            
                             <td>{{ $row->title }}</a></td>
-                            <td>{{ $row->description }}</a></td>
+                            <td>{{ Str::limit( $row->description , $limit = 30, $end = '...')}}</a></td>
                             <td>{{ $row->date }}</td>
-                            <td>{{ $row->status }}</td>
+                            <td>    
+                                @if($row->status == 0)                            
+                                <button onclick="actionFinish({{ $row->id }})" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Finish" aria-describedby="tooltip776767"><i class="fa fa-check" aria-hidden="true"></i></button>                                
+                                @endif
+                                <a href="{{ route('superadmin.brainstroming.destroy', $row->id)}}" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete" aria-describedby="tooltip776767"> <span><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></span></a>                                
+                            </td>
                         </tr>                        
                         @endforeach                        
                     </tbody>
@@ -156,6 +166,14 @@
 @endsection
 
 @section('script')
+
+    <script>
+        function actionFinish(id) {
+            document.getElementById("id").value = id                        
+            document.getElementById("actionFinish").submit()
+        }
+    </script>
+
     <script src="{{ asset('material/js/mask.js')}}"></script>
     <script>$('#brainstromingTable').DataTable();</script>
 @endsection
